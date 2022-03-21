@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <!--修正(https://style.potepan.com/articles/20409.html#action82218221)-->
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="投稿" />
+        </form>
+    {% include "_get_back.html" %}
+    </body>
+</html>

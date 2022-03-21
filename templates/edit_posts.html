@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!--(https://noumenon-th.net/programming/2019/11/19/django-updateview/)-->
+<html>
+ 
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+ 
+<body>
+    <h1>edit_postsの画面</h1>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="保存する">
+    </form>
+
+    {% include "_get_back.html" %}
+</body>
+ 
+</html>

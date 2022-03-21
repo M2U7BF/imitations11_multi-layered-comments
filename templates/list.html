@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div>
+        <a href="{% url 'form' %}">新規投稿</a>
+    </div>
+    <div>
+        {% for post in object_list %}
+        <div class="post_box">
+            <div class="post_title_box">
+                <p id="post_title">{{ post.title }}</p> <!--post.titleという変数の展開(https://e-tec-memo.herokuapp.com/article/67/)-->
+            </div>
+            <p class="text">{{ post.memo }}</p>
+            <!--参考(https://qiita.com/kotayanagi/items/b97fe4a85b03cc6880ac)-->
+            <a href="{% url 'update' post.id %}">編集</a>
+            <a href="{% url 'comments-create' post.id %}">コメント</a>
+                <div>
+                    {% for comment in comment_list %}
+                        {% if comment.subject.pk == post.id %} <!--そのPostについたコメントのみ表示-->
+                            <div class="comment_box">
+                                <!--list内のイテレータに対して〜を指定し参照-->
+                                <!--参考(https://office54.net/python/django/template-for-loop)-->
+                                <!--<p>コメント： {{ forloop.counter }}</p>-->
+                                <!--日付の表示の修正。(https://yu-nix.com/blog/2021/9/10/django-datetimefield/#DateTimeField%E3%81%AE%E6%A7%8B%E9%80%A0)-->
+                                <p class="text">{{ comment.created_at | date:'Y/m/d H:i:s'}} : {{ comment.text }}</p>
+                                <!--文の省略(https://metrograph.jp/css_gradation_paragraph/)-->
+                            </div>
+                        {% else %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>

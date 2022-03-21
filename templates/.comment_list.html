@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <!--(https://django.kurodigi.com/comment_regist/)-->
+    <!--コメント表示-->
+    <h1>commentの画面</h1>
+    <div >
+        {% if comment_list %}
+        {% for comment in comment_list %}
+        <div >
+            <p>{{comment.no}}. {{comment.user_name}}<br>{{comment.created}}</p>
+            {% if comment.pub_flg %}
+            <p><pre>{{comment.message}}</pre></p>
+            {% else %}
+            <p>このコメントは非表示となりました。</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+        {% else %}
+        <div><p>まだコメントはありません</p></div>
+        {% endif %}
+    </div>
+    <!--//コメント表示-->
+    <!--コメント投稿-->
+    <h4>コメント投稿</h4>
+    <div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">コメント投稿</button>
+        </form>
+    </div>
+    <!--//コメント投稿-->
+
+    <a href="{% url 'list' %}">戻る</a>
+</body>
+</html>

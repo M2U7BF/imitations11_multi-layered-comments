@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+<form method="POST">
+    {% csrf_token %}
+        <!--ヘルプテキストの追加(http://bootstrap3.cyberlab.info/css/forms-helpText.html)-->
+        <p>タイトル：<input type="text" name="title" placeholder="タイトルを入力してください"></p>
+        <p>本文：<input type="text" name="memo" placeholder="本文を入力してください"></p>
+        <!--submit だと送信ボタンになる (https://developer.mozilla.org/ja/docs/Web/HTML/Element/input/submit)-->
+        <input type="submit" value="投稿する">
+</form>
+{% include "_get_back.html" %}
