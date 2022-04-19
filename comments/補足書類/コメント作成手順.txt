@@ -1,0 +1,17 @@
+ModelFormでフォーム作成
+
+
+form が値を受け取り、validationし保存
+あるPostに対しコメントが1:M
+
+リスト画面に表示したい
+---
+
+
+postからコメント投稿画面に移動する。
+    当該postのpk取得
+        1.selectタグで実装
+        2.デフォルトでなるように変更
+formで投稿
+    当該postのpkをsubjectとして保存
+

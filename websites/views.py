@@ -120,16 +120,6 @@ class CommentForm(CreateView):
     
     success_url = reverse_lazy('list')
 
-"""
-    # formのpostの値を受け取る(https://qiita.com/nab/items/e32cde1643a010dfacb9)
-    def post(self, request, *args, **kwargs):
-        # 修正(https://teratail.com/questions/230652)
-        context = {
-            'subject': request.POST.get('subject'),
-        }
-        return render(request, 'list.html', context)
-"""
-
     # モデルをDBから取得し変数に代入
     # モデルクラス名.objects.all()をviews.pyに記述。(https://kuma-server.com/objects-all/)
     # comment_list = Comment.objects.all()

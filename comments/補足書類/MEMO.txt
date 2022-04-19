@@ -1,0 +1,82 @@
+---ベース
+2022/03/07 投稿フォームの作成
+    参考(https://qiita.com/frosty/items/52a6d41c721c77a18e81)
+2022/03/07 gitアップロード(https://techacademy.jp/magazine/6235#ta-toc-4)
+    ローカルリポジトリをプッシュしてリモートリポジトリへ反映させる（git push）
+    ローカルリポジトリの変更を、GitHub上にあるリモートリポジトリに反映させるため、以下のコマンドを実行します。
+     git status
+    git commit -m “コミットテスト”
+    git push origin master
+---
+2022/03/07 [Django]コメント機能の追加
+    参考(https://django.kurodigi.com/comment_regist/)
+2022/03/10 formあたりが難しいので一度放置
+良いサイト https://note.com/saito_pythonista/n/n6550f5c2a07b
+2022/03/13
+    pkでのurl指定を再考。
+2022/03/14
+    編集画面まで完成。
+2022/03/14
+2022/03/15
+    comment_formのformタグのactionの指定先に問題あり
+2022/03/16
+    次回やること
+        DBからデータ取得。views.pyのget_context_dataの編集。
+        runserverでのデバッグをする。
+2022/03/18
+    次回
+    コメント投稿画面で投稿先を設定したい。
+    デフォルトで押したところのコメントになるようにしたい。
+2022/03/19
+    selectタグとバックエンドを結ぶ
+2022/03/20
+    次回
+    コメント投稿後list.htmlを表示
+2022/03/21
+    大枠完成
+2022/03/22
+    gitにアップロード(https://wayasblog.com/github-upload/#toc2)
+    
+
+課題
+関数ベースビューの理解
+
+
+エラー
+    2022/03/13
+    list/へのアクセスでNoReverseMatch at /list/発生
+        対処
+            検索
+                urls.pyの編集(https://chuna.tech/detail/67/#i4)
+                アプリのurls.pyでapp_name="アプリ名"を指定。
+                htmlで{% urls 'アプリ名：urlpatternsのnameで指定した値' %}
+    pkでのurl指定(動的なルーティング)でエラー。
+        対処
+            検索
+                app_nameの削除
+                <pk>での指定
+    編集画面で保存するとImproperlyConfigured発生
+    編集画面で保存するとNoReverseMatch 発生
+        内容
+            Reverse for 'list' with keyword arguments '{'pk': 1}' not found. 1 pattern(s) tried: 
+        対処
+            views.pyのget_success_urlの以下削除
+                kwargs={'pk': self.id}) 
+    /admin/websites/comment/アクセス時以下のエラー
+        内容
+            no such column: websites_comment.comment_id
+        対処
+            ~のカラム（列）が見つからないと出ているので、マイグレーションファイルか、コントローラーか、モデルファイルに間違いがあり、うまくデータを紐付けできていないと考えた。
+                (https://qiita.com/oden-09/items/2a0da0a0363c3ff86a61)
+    開発サーバーの起動で、no such table: websites_postのエラー
+        内容
+        対処
+            未解決(https://stackoverflow.com/questions/34548768/django-no-such-table-exception)
+            解決(https://noauto-nolife.com/post/django-makemigrations-not-applied/)
+            
+
+
+
+
+豆知識
+    urls.pyでapp_name指定するとhtmlでもその指定が必要になる

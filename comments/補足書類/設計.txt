@@ -1,0 +1,14 @@
+工夫を要した仕様
+    ある投稿に対し関連したコメントのみ表示
+        該当部分
+            list.htmlの22行目
+            {% if comment.subject.pk == post.id %} 
+            subjectでforeinkey指定したpostモデルのpkを取得し、それを元に絞り込み
+    コメント投稿画面で投稿先(subject)にurl遷移元のPostモデルを設定する
+        views.pyの113行目
+        get_formで初期値(initial)を設定。pkを指定する点が手こずった。
+
+応用
+・投稿一つ一つにさらにコメント投稿ができる
+    方法
+        pkで表示された〜にさらに
